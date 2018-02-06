@@ -1,4 +1,4 @@
-package com.ygl.es.ElasticSearchTest;
+package com.ygl.es;
 
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 
