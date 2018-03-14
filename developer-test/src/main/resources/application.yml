@@ -1,0 +1,2 @@
+# testdb url is jdbc:h2:mem:testdb
+spring.h2.console.enabled: false

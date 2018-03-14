@@ -1,0 +1,24 @@
+.class
+.log.gz
+.log
+
+# Package Files
+.jar
+.war
+.ear
+
+# IDEA
+.iml
+.idea/
+
+# Java and Maven
+atlassian-ide-plugin.xml
+target/
+.project
+.classpath
+.settings/
+*ToIgnore.java
+
+alias gic="git commit -am"
+.DS_Store
+local.dev.yml
