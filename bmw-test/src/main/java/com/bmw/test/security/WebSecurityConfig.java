@@ -1,4 +1,4 @@
-package com.bmw.test.config;
+package com.bmw.test.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,31 +16,21 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	// @formatter:off
-	private static final String[] AUTH_WHITELIST = {
-			// -- swagger ui
-			"/console/**", "/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/security",
-			"/swagger-ui.html**", "/webjars/**"
-
-	};
-	// @formatter:on
-
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		// web.ignoring().antMatchers(AUTH_WHITELIST);
-	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// @formatter:off
-		http.authorizeRequests().antMatchers("/").permitAll().anyRequest().authenticated()
-		.and().authorizeRequests().antMatchers("/console/**").permitAll().and()
-		.logout()
-				.permitAll().and().formLogin().permitAll().and().httpBasic();
+
+		http.
+			authorizeRequests().antMatchers("/").permitAll().anyRequest().authenticated().
+		and().
+			authorizeRequests().antMatchers("/swagger-ui.html").permitAll().
+		and().
+			formLogin()
+				.permitAll().and().logout().permitAll();
 		http.csrf().disable();
-		// @formatter:on
+        http.headers().frameOptions().disable();
+
 	}
 
 	@Override
