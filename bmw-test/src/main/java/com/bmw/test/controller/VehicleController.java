@@ -35,13 +35,14 @@ public class VehicleController {
 
 	@Autowired
 	private VehicleService vehicleService;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Vehicle> index() {
+	public ResponseEntity<List<Vehicle>> index() {
 		log.debug("Getting all vehicles");
-		return vehicleService.findAll();
+		List<Vehicle> vehicles = vehicleService.findAll();
+		return new ResponseEntity<List<Vehicle>>(vehicles, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "{vin}/savePosition", method = RequestMethod.POST)
 	public ResponseEntity<String> savePosition(@PathVariable("vin") String vin, @RequestBody Position position) {
 		vehicleService.savePosition(vin, position);
@@ -49,14 +50,15 @@ public class VehicleController {
 	}
 
 	@RequestMapping(value = "/savePositions/csv", method = RequestMethod.POST)
-	public ResponseEntity<String> savePositionsByCsv(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws Exception {
+	public ResponseEntity<String> savePositionsByCsv(@RequestParam("file") MultipartFile file,
+			HttpServletRequest request) throws Exception {
 		if (file.isEmpty()) {
-            throw new Exception("uploaded file is empty");
-        }
+			throw new Exception("uploaded file is empty");
+		}
 		vehicleService.savePositionsByCsv(file, request);
 		return new ResponseEntity<String>("successfully", HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/{vin}/getAllSessions", method = RequestMethod.GET)
 	public List<Position> getAllSessions(@PathVariable("vin") String vin) {
 		log.debug("Getting all sessions of a vehicle");
@@ -64,12 +66,12 @@ public class VehicleController {
 	}
 
 	@RequestMapping(value = "/{vin}/getSingleSession/session", method = RequestMethod.GET)
-	public List<Position> getSingleSession(@PathVariable("vin") String vin,@RequestParam("session") String session) {
+	public List<Position> getSingleSession(@PathVariable("vin") String vin, @RequestParam("session") String session) {
 		return vehicleService.findPositionsBySession(vin, session);
 	}
-	
+
 	@RequestMapping(value = "/{vin}/getSingleSession/timestamp", method = RequestMethod.GET)
-	public Position getSingleSession(@PathVariable("vin") String vin,@RequestParam("timestamp") Long timestamp) {
+	public Position getSingleSession(@PathVariable("vin") String vin, @RequestParam("timestamp") Long timestamp) {
 		return vehicleService.findPositionByTimestamp(vin, timestamp);
 	}
 
