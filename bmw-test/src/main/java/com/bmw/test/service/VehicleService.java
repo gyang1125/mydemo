@@ -18,6 +18,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -122,6 +124,7 @@ public class VehicleService {
 	 * @exception VehicleNotFoundException
 	 *                if <code>vin</code> is not found
 	 */
+	@Transactional(isolation = Isolation.REPEATABLE_READ)
 	public Vehicle savePosition(String vin, Position position) {
 		Vehicle vehicle = vehicleRepository.findByVin(vin);
 		if (null == vehicle)
