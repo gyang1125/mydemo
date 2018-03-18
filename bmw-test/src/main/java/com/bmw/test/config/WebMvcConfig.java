@@ -12,6 +12,13 @@ import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
+/**
+ * SpringMVC Configuration
+ * 
+ * @author gyang
+ *
+ */
+
 @Configuration
 public class WebMvcConfig {
 

@@ -11,8 +11,12 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.test.annotation.Repeat;
-
+/**
+ * Vehicle data model
+ * 
+ * @author gyang
+ *
+ */
 @Entity
 public class Vehicle extends AbstractPersistable {
 
@@ -20,7 +24,7 @@ public class Vehicle extends AbstractPersistable {
 	@Size(min = 1)
 	@Column(nullable = false, unique = true)
 	private String vin;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_vehicle")
 	private List<Position> positions = new ArrayList<Position>();
@@ -49,7 +53,7 @@ public class Vehicle extends AbstractPersistable {
 	public void setPositions(List<Position> positions) {
 		this.positions = positions;
 	}
-	
+
 	public void addPosition(Position position) {
 		this.positions.add(position);
 	}

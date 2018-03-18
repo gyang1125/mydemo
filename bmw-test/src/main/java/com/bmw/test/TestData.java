@@ -11,6 +11,13 @@ import org.springframework.stereotype.Component;
 
 import com.bmw.test.service.VehicleService;
 
+/**
+ * Dummy data
+ * 
+ * @author gyang
+ *
+ */
+
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class TestData {

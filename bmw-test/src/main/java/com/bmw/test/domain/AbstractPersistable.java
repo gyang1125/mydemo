@@ -9,6 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
+/**
+ * Generic data model
+ * 
+ * @author gyang
+ *
+ */
+
 @MappedSuperclass
 public abstract class AbstractPersistable implements Serializable, Persistable<Long> {
 

@@ -3,6 +3,12 @@ package com.bmw.test.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+/**
+ * Position data model
+ * 
+ * @author gyang
+ *
+ */
 @Entity
 public class Position extends AbstractPersistable {
 

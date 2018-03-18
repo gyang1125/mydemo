@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.bmw.test.controller.dto.SystemMessageDTO;
+import com.bmw.test.exception.VehicleNotFoundException;
 
 @ControllerAdvice
 public class ErrorHandling {
@@ -30,6 +31,12 @@ public class ErrorHandling {
 		return new ResponseEntity<SystemMessageDTO>(
 				new SystemMessageDTO(HttpStatus.INTERNAL_SERVER_ERROR, "internal_error", e.getLocalizedMessage()),
 				HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@ExceptionHandler(VehicleNotFoundException.class)
+	public final ResponseEntity<SystemMessageDTO> handleVehicleNotFoundException(VehicleNotFoundException e) {
+		return new ResponseEntity<SystemMessageDTO>(
+				new SystemMessageDTO(HttpStatus.NOT_FOUND, "not_found", e.getLocalizedMessage()), HttpStatus.NOT_FOUND);
 	}
 
 }
