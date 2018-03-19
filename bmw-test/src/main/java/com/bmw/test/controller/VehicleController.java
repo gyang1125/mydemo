@@ -22,10 +22,10 @@ import com.bmw.test.domain.Vehicle;
 import com.bmw.test.service.VehicleService;
 
 /**
- * Vehicle controller
- * 
- * @author gyang
+ * Class <code>VehicleController</code>
  *
+ * @author gyang
+ * 
  */
 @RestController
 @RequestMapping("/api/v1/vehicles")

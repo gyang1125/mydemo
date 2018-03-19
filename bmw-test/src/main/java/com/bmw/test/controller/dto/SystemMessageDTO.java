@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
 
 /**
- * System message
+ * Class <code>SystemMessageDTO</code> transfers system message to UI
  * 
  * @author gyang
  *

@@ -1,7 +1,14 @@
 package com.bmw.test.exception;
 
+/**
+ * Class <code>PositionNotFoundException</code> is exception to deal with as
+ * <code>position</code> is not found
+ * 
+ * @author gyang
+ *
+ */
 public class PositionNotFoundException extends RuntimeException {
-	
+
 	public PositionNotFoundException() {
 		super();
 	}

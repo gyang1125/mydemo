@@ -3,8 +3,9 @@ package com.bmw.test.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.bmw.test.domain.Vehicle;
+
 /**
- * Vehicle repository
+ * Class <code>VehicleRepository</code>
  * 
  * @author gyang
  *

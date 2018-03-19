@@ -1,16 +1,19 @@
 package com.bmw.test.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.domain.Persistable;
+import java.io.Serializable;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import java.io.Serializable;
+
+import org.springframework.data.domain.Persistable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * Generic data model
+ * Class <code>AbstractPersistable</code> is generic data model which is
+ * inherited by sub-classes
  * 
  * @author gyang
  *
@@ -19,49 +22,50 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class AbstractPersistable implements Serializable, Persistable<Long> {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    @Override
-    public Long getId() {
-        return id;
-    }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
- 
-    @JsonIgnore
-    public boolean isNew() {
-        return null == getId();
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (null == obj) {
-            return false;
-        }
+	@Override
+	@JsonIgnore
+	public boolean isNew() {
+		return null == getId();
+	}
 
-        if (this == obj) {
-            return true;
-        }
+	@Override
+	public boolean equals(Object obj) {
+		if (null == obj) {
+			return false;
+		}
 
-        if (!getClass().equals(obj.getClass())) {
-            return false;
-        }
+		if (this == obj) {
+			return true;
+		}
 
-        AbstractPersistable that = (AbstractPersistable) obj;
+		if (!getClass().equals(obj.getClass())) {
+			return false;
+		}
 
-        return null != this.getId() && this.getId().equals(that.getId());
-    }
+		AbstractPersistable that = (AbstractPersistable) obj;
 
-    @Override
-    public int hashCode() {
-        int hashCode = 17;
-        hashCode += null == getId() ? 0 : getId().hashCode() * 31;
+		return null != this.getId() && this.getId().equals(that.getId());
+	}
 
-        return hashCode;
-    }
+	@Override
+	public int hashCode() {
+		int hashCode = 17;
+		hashCode += null == getId() ? 0 : getId().hashCode() * 31;
+
+		return hashCode;
+	}
 
 }

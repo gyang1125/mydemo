@@ -1,7 +1,8 @@
 package com.bmw.test.exception;
 
 /**
- * Vehicle not found exception
+ * Class <code>VehicleNotFoundException</code> is exception to deal with as
+ * <code>vin</code> is not found
  * 
  * @author gyang
  *

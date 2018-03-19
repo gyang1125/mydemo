@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * Vehicle data model
+ * Class <code>Vehicle</code> data model
  * 
  * @author gyang
  *

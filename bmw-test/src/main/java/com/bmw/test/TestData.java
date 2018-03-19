@@ -12,23 +12,23 @@ import org.springframework.stereotype.Component;
 import com.bmw.test.service.VehicleService;
 
 /**
- * Dummy data
- * 
- * @author gyang
+ * Class <code>TestData</code> is creating dummy data
  *
+ * @author gyang
+ * 
  */
 
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class TestData {
 	private static final Logger log = LoggerFactory.getLogger(TestData.class);
-	
+
 	@Autowired
 	private VehicleService vehicleService;
-	
+
 	@PostConstruct
 	public void insertTestData() {
-		
+
 	}
 
 }

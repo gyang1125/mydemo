@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
- * Position data model
+ * Class <code>Position</code> data model
  * 
  * @author gyang
  *
