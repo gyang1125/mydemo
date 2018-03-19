@@ -1,4 +1,4 @@
-package com.bmw.test.controller;
+package com.bmw.test.exception;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,8 +8,14 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.bmw.test.controller.dto.SystemMessageDTO;
-import com.bmw.test.exception.VehicleNotFoundException;
 
+/**
+ * Class <code>ErrorHandling</code> is centralised to manage the error handling
+ * process
+ * 
+ * @author gyang
+ *
+ */
 @ControllerAdvice
 public class ErrorHandling {
 

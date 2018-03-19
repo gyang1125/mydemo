@@ -1,19 +1,21 @@
 package com.bmw.test.config;
 
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationConfig;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-import javax.annotation.PostConstruct;
-import java.text.SimpleDateFormat;
-import java.util.TimeZone;
 
 /**
- * SpringMVC Configuration
+ * Class <code>WebMvcConfig</code>
  * 
  * @author gyang
  *
@@ -22,32 +24,32 @@ import java.util.TimeZone;
 @Configuration
 public class WebMvcConfig {
 
-    // Strict ISO 8601 date format with UTC offset
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"); 
+	// Strict ISO 8601 date format with UTC offset
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 
-    @Bean
-    public ObjectMapper objectMapper() {
- 
-        ObjectMapper mapper = new ObjectMapper();
+	@Bean
+	public ObjectMapper objectMapper() {
 
-        JodaModule jodaModule = new JodaModule();
-        mapper.registerModule(jodaModule);
-        mapper.setTimeZone(TimeZone.getTimeZone("UTC"));
+		ObjectMapper mapper = new ObjectMapper();
 
-        mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+		JodaModule jodaModule = new JodaModule();
+		mapper.registerModule(jodaModule);
+		mapper.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-        SerializationConfig serConfig = mapper.getSerializationConfig();
-        serConfig.with(dateFormat);
-        DeserializationConfig deserConfig = mapper.getDeserializationConfig();
-        deserConfig.with(dateFormat);
+		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 
-        return mapper;
-    }
+		SerializationConfig serConfig = mapper.getSerializationConfig();
+		serConfig.with(dateFormat);
+		DeserializationConfig deserConfig = mapper.getDeserializationConfig();
+		deserConfig.with(dateFormat);
 
-    @PostConstruct
-    public void initialize() {
-        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-    }
+		return mapper;
+	}
+
+	@PostConstruct
+	public void initialize() {
+		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+	}
 
 }

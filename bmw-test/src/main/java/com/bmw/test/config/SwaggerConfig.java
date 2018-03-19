@@ -12,7 +12,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * Swagger2 configuration in spring boot
+ * Class <code>SwaggerConfig</code> to setup the Swagger UI in Spring Boot
  * 
  * @author gyang
  *
