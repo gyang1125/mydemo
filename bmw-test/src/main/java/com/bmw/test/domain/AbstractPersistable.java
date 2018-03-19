@@ -24,6 +24,7 @@ public abstract class AbstractPersistable implements Serializable, Persistable<L
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonIgnore
 	private Long id;
 
 	@Override

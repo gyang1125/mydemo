@@ -2,11 +2,14 @@ package com.bmw.test.config;
 
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
+import java.util.concurrent.Executor;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,10 +25,22 @@ import com.fasterxml.jackson.datatype.joda.JodaModule;
  */
 
 @Configuration
+@EnableAsync
 public class WebMvcConfig {
 
 	// Strict ISO 8601 date format with UTC offset
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+
+	@Bean
+	public Executor asyncExecutor() {
+		ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+		executor.setCorePoolSize(2);
+		executor.setMaxPoolSize(2);
+		executor.setQueueCapacity(500);
+		executor.setThreadNamePrefix("LocationLookup-");
+		executor.initialize();
+		return executor;
+	}
 
 	@Bean
 	public ObjectMapper objectMapper() {

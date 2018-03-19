@@ -21,13 +21,13 @@
 
 To start this web application just follow these steps:
 
-1. Build the project via Maven:
+1. **Build the project via Maven:**
 
-    ```bash
+    ```
     $ mvn clean install
     ```
 
-2. Start the application:
+2. **Start the application:**
     * In your IDE invoke the class method 
 
       ```
@@ -42,7 +42,7 @@ To start this web application just follow these steps:
     $ java -jar target\location-0.1-SNAPSHOT.jar
     ```
 
-3. Browse to the following URL for API:
+3. **Browse to the following URL for API:**
 
     [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
@@ -57,7 +57,17 @@ To start this web application just follow these steps:
 
     ![](src\main\resources\screenshots\login.PNG)
 
-4. Upload `data.csv` using bash script `uploadCSV.bat` to execute curl command automatically
+4. **Inject observation data**
+
+    After application server has been already started, to execute the bash file `uploadCSV.bat` being able to upload the `data.csv` into embedded database of this application. 
+
+    ```
+    uploadCSV.bat
+    --------------
+    @echo off
+    curl -F file=@"./data1.csv" -u bmw:bmw http://localhost:8080/api/v1/vehicles/savePositions/csv
+    @pause
+    ```
 
     ​
 
@@ -73,3 +83,20 @@ To start this web application just follow these steps:
 
 #### Assumption
 
+Because of the ambiguous description:
+
+> get a single session as an ordered list of the received positions by timestamp
+
+I created two APIs to implement this requirement
+
+1. ```
+   getSingleSession(String vin, String sessionId) : List<Position>
+   ```
+
+   which passes `vin` and `sessionId` as request parameters to return a session contains a list of positions that are sorted in descending order by timestamp. 
+
+2. ```
+   getSingleSession(String vin, Long timestamp): Position
+   ```
+
+   which passes `vin` and `timestmap`  to get a single session contains only single position information.

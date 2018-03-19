@@ -11,12 +11,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,11 +51,15 @@ public class VehicleService {
 	 * @return list of vehicles
 	 */
 	public List<Vehicle> findAll() {
-		return vehicleRepository.findAll();
+		List<Vehicle> vehicles = vehicleRepository.findAll();
+		if (vehicles.isEmpty() || null == vehicles)
+			throw new VehicleNotFoundException("No Vehicles are found");
+		return vehicles;
 	}
 
 	/**
-	 * Find positions of a certain vehicle by its <code>vin</code>
+	 * Find positions of a certain vehicle by its <code>vin</code> and this function
+	 * is asynchronous.
 	 * 
 	 * @param vin
 	 *            Vehicle Identification Number
@@ -62,12 +69,15 @@ public class VehicleService {
 	 * @exception VehicleNotFoundException
 	 *                if <code>vin</code> is not found
 	 */
-	public List<Position> findPositionsByVin(String vin) {
+	@Async
+	public CompletableFuture<List<Position>> findPositionsByVin(String vin) throws InterruptedException {
 		Assert.notNull(vin, "VIN must not be null");
 		Vehicle vehicle = vehicleRepository.findByVin(vin);
-		if (null == vehicle)
+		if (null == vehicle) {
 			throw new VehicleNotFoundException("vin does not exit");
-		return vehicle.getPositions();
+		}
+		List<Position> positions = vehicle.getPositions();
+		return CompletableFuture.completedFuture(positions);
 	}
 
 	/**
@@ -81,10 +91,15 @@ public class VehicleService {
 	 * @param session
 	 *            Session Identification String for vehicle
 	 * @return List of positions of a certain vehicle by <code>session</code>
+	 * 
+	 * @throws ExecutionException
+	 * @throws InterruptedException
 	 */
-	public List<Position> findPositionsBySession(String vin, String session) {
+	public List<Position> findPositionsBySession(String vin, String session)
+			throws ExecutionException, InterruptedException {
 		List<Position> resultPositions = new ArrayList<Position>();
-		this.findPositionsByVin(vin).forEach(position -> {
+		List<Position> allPositions = this.findPositionsByVin(vin).get();
+		allPositions.forEach(position -> {
 			if (session.equals(position.getSession()))
 				resultPositions.add(position);
 		});
@@ -102,9 +117,12 @@ public class VehicleService {
 	 * @param timestamp
 	 *            date time
 	 * @return a single position of a certain vehicle by <code>timestamp</code>
+	 * @throws InterruptedException
+	 * @throws ExecutionException
 	 */
-	public Position findPositionByTimestamp(String vin, Long timestamp) {
-		List<Position> positions = this.findPositionsByVin(vin);
+	public Position findPositionByTimestamp(String vin, Long timestamp)
+			throws InterruptedException, ExecutionException {
+		List<Position> positions = this.findPositionsByVin(vin).get();
 		for (Position position : positions) {
 			if (timestamp.equals(position.getTimestamp()))
 				return position;
@@ -144,6 +162,7 @@ public class VehicleService {
 	 *            HttpServletRequest
 	 * 
 	 */
+	@Transactional(isolation = Isolation.REPEATABLE_READ)
 	public void savePositionsByCsv(MultipartFile file, HttpServletRequest request) {
 		String serverRoot = request.getSession().getServletContext().getRealPath("/");
 		String filePath = serverRoot + "/" + file.getOriginalFilename();

@@ -6,10 +6,13 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Class <code>Vehicle</code> data model
@@ -25,8 +28,9 @@ public class Vehicle extends AbstractPersistable {
 	@Column(nullable = false, unique = true)
 	private String vin;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_vehicle")
+	@JsonIgnore
 	private List<Position> positions = new ArrayList<Position>();
 
 	public Vehicle() {
