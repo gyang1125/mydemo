@@ -52,7 +52,6 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
-
 		<!-- Persistence -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
