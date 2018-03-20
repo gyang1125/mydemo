@@ -4,8 +4,9 @@
 
 #### Technologies used in the project
 
-* Maven
-* Spring Boot stack
+* IDE Eclipse Oxygen
+* Maven 3.x
+* Spring Boot 2.0.0 stack
     * Spring Data JPA (for persistence)
     * Spring MVC (for REST endpoints)
     * Spring Security (for Authentication)
@@ -14,7 +15,7 @@
 #### Prerequisites installed
 
 * Oracle JDK 1.8
-* Maven
+* Maven 3.x
 * cURL
 
 #### Getting started
