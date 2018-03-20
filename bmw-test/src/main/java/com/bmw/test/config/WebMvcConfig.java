@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import com.bmw.test.domain.Position;
+import com.bmw.test.domain.PositionCustomSerializer;
 import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationConfig;
@@ -48,10 +50,11 @@ public class WebMvcConfig {
 		ObjectMapper mapper = new ObjectMapper();
 
 		JodaModule jodaModule = new JodaModule();
+		jodaModule.addSerializer(Position.class, new PositionCustomSerializer());
 		mapper.registerModule(jodaModule);
 		mapper.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
 		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 
 		SerializationConfig serConfig = mapper.getSerializationConfig();

@@ -3,6 +3,8 @@ package com.bmw.test.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 /**
  * Class <code>Position</code> data model
  * 
@@ -10,6 +12,7 @@ import javax.persistence.Entity;
  *
  */
 @Entity
+@JsonSerialize(using = PositionCustomSerializer.class)
 public class Position extends AbstractPersistable {
 
 	@Column(unique = true, nullable = false)
