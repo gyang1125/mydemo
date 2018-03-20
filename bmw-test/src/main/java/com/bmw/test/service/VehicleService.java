@@ -163,7 +163,7 @@ public class VehicleService {
 	 * 
 	 */
 	@Transactional(isolation = Isolation.REPEATABLE_READ)
-	public void savePositionsByCsv(MultipartFile file, HttpServletRequest request) {
+	public void savePositionByCsv(MultipartFile file, HttpServletRequest request) {
 		String serverRoot = request.getSession().getServletContext().getRealPath("/");
 		String filePath = serverRoot + "/" + file.getOriginalFilename();
 		Path path = null;

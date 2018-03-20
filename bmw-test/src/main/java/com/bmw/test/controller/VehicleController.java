@@ -51,14 +51,15 @@ public class VehicleController {
 		return new ResponseEntity<String>("save position successfully", HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/savePositions/csv", method = RequestMethod.POST)
-	public ResponseEntity<String> savePositionsByCsv(@RequestParam("file") MultipartFile file,
+	@RequestMapping(value = "/savePosition/csv", method = RequestMethod.POST)
+	public ResponseEntity<String> savePositionByCsv(@RequestParam("file") MultipartFile file,
 			HttpServletRequest request) throws Exception {
 		log.debug("Uploading csv data");
 		if (file.isEmpty()) {
 			throw new Exception("uploaded file must be not empty");
 		}
-		vehicleService.savePositionsByCsv(file, request);
+		
+		vehicleService.savePositionByCsv(file, request);
 		return new ResponseEntity<String>("upload csv successfully", HttpStatus.OK);
 	}
 
