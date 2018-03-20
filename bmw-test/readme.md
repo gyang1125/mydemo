@@ -65,19 +65,29 @@ To start this web application just follow these steps:
 
     ![](src\main\resources\screenshots\login.PNG)
 
-5. **Inject observation data**
+5. Access to embedded database H2 console:
 
-    After application has been already started, to execute the bash file `uploadCSV.bat` being able to upload the `data.csv` into embedded database of this application. 
+    http://localhost:8080/console
+
+    ![h2console](src\main\resources\screenshots\h2console.PNG)
+
+6. **Upload observation data**
+
+    After application has been already started, to execute the bash file `Upload_CSV_Shell_Script.bat` being able to upload the `data.csv` into embedded database of this application. 
+
+    > **Note that**, because of security issue as passing bash file by email, I changed the filename extension to "Upload_CSV_Shell_Script.txt". To run it, please change the filename extension back to .bat.
 
     ```
     Upload_CSV_Shell_Script.bat
     --------------
     @echo off
-    curl -F file=@"./data.csv" -u bmw:bmw http://localhost:8080/api/v1/vehicles/savePositions/csv
+    curl -F file=@"./data.csv" -u bmw:bmw http://localhost:8080/api/v1/vehicles/savePosition/csv
     @pause
     ```
 
-    ​
+    or on the Swagger UI to upload csv data manually:
+
+    ![uploadcsv](src\main\resources\screenshots\uploadcsv.PNG)
 
 #### Information
 
