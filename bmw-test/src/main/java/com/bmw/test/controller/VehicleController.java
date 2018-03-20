@@ -37,6 +37,11 @@ public class VehicleController {
 	@Autowired
 	private VehicleService vehicleService;
 
+	/**
+	 * Get all vehicles
+	 * 
+	 * @return list of vehicle
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Vehicle>> index() {
 		log.debug("Getting all vehicles");
@@ -44,6 +49,15 @@ public class VehicleController {
 		return new ResponseEntity<List<Vehicle>>(vehicles, HttpStatus.OK);
 	}
 
+	/**
+	 * Save positon for a certain vehicle
+	 * 
+	 * @param vin
+	 *            vehicke identification number
+	 * @param position
+	 *            position of vehicle
+	 * @return http status
+	 */
 	@RequestMapping(value = "{vin}/savePosition", method = RequestMethod.POST)
 	public ResponseEntity<String> savePosition(@PathVariable("vin") String vin, @RequestBody Position position) {
 		log.debug("Saving position with a certain vin");
@@ -51,6 +65,17 @@ public class VehicleController {
 		return new ResponseEntity<String>("save position successfully", HttpStatus.OK);
 	}
 
+	/**
+	 * Upload csv file to save position in bulk
+	 * 
+	 * @param file
+	 *            csv file
+	 * @param request
+	 *            http request
+	 * @return http status
+	 * @throws Exception
+	 *             if uploaded file is empty
+	 */
 	@RequestMapping(value = "/savePosition/csv", method = RequestMethod.POST)
 	public ResponseEntity<String> savePositionByCsv(@RequestParam("file") MultipartFile file,
 			HttpServletRequest request) throws Exception {
@@ -58,10 +83,21 @@ public class VehicleController {
 		if (file.isEmpty()) {
 			throw new Exception("uploaded file must be not empty");
 		}
-		
+
 		vehicleService.savePositionByCsv(file, request);
 		return new ResponseEntity<String>("upload csv successfully", HttpStatus.OK);
 	}
+
+	/**
+	 * Get all sessions for a certain vehicle
+	 * 
+	 * 
+	 * @param vin
+	 *            vehicle identification number
+	 * @return list of position
+	 * @throws InterruptedException
+	 * @throws ExecutionException
+	 */
 
 	@RequestMapping(value = "/{vin}/getAllSessions", method = RequestMethod.GET)
 	public ResponseEntity<List<Position>> getAllSessions(@PathVariable("vin") String vin)
@@ -71,6 +107,18 @@ public class VehicleController {
 		return new ResponseEntity<List<Position>>(positions, HttpStatus.OK);
 	}
 
+	/**
+	 * Get single session for a certain vehicle and the list of received positions
+	 * is in descending order
+	 * 
+	 * @param vin
+	 *            vehicle identification number
+	 * @param session
+	 *            session id
+	 * @return list of position
+	 * @throws ExecutionException
+	 * @throws InterruptedException
+	 */
 	@RequestMapping(value = "/{vin}/getSingleSession/session", method = RequestMethod.GET)
 	public ResponseEntity<List<Position>> getSingleSession(@PathVariable("vin") String vin,
 			@RequestParam("session") String session) throws ExecutionException, InterruptedException {
@@ -79,6 +127,17 @@ public class VehicleController {
 		return new ResponseEntity<List<Position>>(positions, HttpStatus.OK);
 	}
 
+	/**
+	 * Get single session for a certain vehicle by particular time stamp
+	 * 
+	 * @param vin
+	 *            vehicle identificaiton number
+	 * @param timestamp
+	 *            time stamp as the position of vehicle is sent
+	 * @return single position
+	 * @throws InterruptedException
+	 * @throws ExecutionException
+	 */
 	@RequestMapping(value = "/{vin}/getSingleSession/timestamp", method = RequestMethod.GET)
 	public ResponseEntity<Position> getSingleSession(@PathVariable("vin") String vin,
 			@RequestParam("timestamp") Long timestamp) throws InterruptedException, ExecutionException {
@@ -87,6 +146,15 @@ public class VehicleController {
 		return new ResponseEntity<Position>(position, HttpStatus.OK);
 	}
 
+	/**
+	 * Get last position for a certain vehicle
+	 * 
+	 * @param vin
+	 *            vehicle identification number
+	 * @return position
+	 * @throws InterruptedException
+	 * @throws ExecutionException
+	 */
 	@RequestMapping(value = "/{vin}/lastPosition/", method = RequestMethod.GET)
 	public ResponseEntity<Position> getLastPosition(@PathVariable("vin") String vin)
 			throws InterruptedException, ExecutionException {
