@@ -24,10 +24,17 @@ To start this web application just follow these steps:
 1. **Build the project via Maven:**
 
     ```
-    $ mvn clean install
+    $ mvn clean install javadoc:javadoc
     ```
 
-2. **Start the application:**
+2. **APIs Reference**
+
+    After building, the API reference will be automatically generated under the directory:
+
+    > target\site\apidocs\index.html
+
+3. **Start the application:**
+
     * In your IDE invoke the class method 
 
       ```
@@ -48,7 +55,7 @@ To start this web application just follow these steps:
 
     ![swaggerui](src\main\resources\screenshots\swaggerui.PNG)
 
-    Because of authorization, browser will be redirected to login page and then you will be asked for logging in with:
+    Note that, because of authorization, browser will be redirected to login page and then you will be asked for logging in with:
 
     ```
     username= bmw
@@ -57,15 +64,15 @@ To start this web application just follow these steps:
 
     ![](src\main\resources\screenshots\login.PNG)
 
-4. **Inject observation data**
+5. **Inject observation data**
 
-    After application server has been already started, to execute the bash file `uploadCSV.bat` being able to upload the `data.csv` into embedded database of this application. 
+    After application has been already started, to execute the bash file `uploadCSV.bat` being able to upload the `data.csv` into embedded database of this application. 
 
     ```
     uploadCSV.bat
     --------------
     @echo off
-    curl -F file=@"./data1.csv" -u bmw:bmw http://localhost:8080/api/v1/vehicles/savePositions/csv
+    curl -F file=@"./data.csv" -u bmw:bmw http://localhost:8080/api/v1/vehicles/savePositions/csv
     @pause
     ```
 
@@ -79,7 +86,7 @@ To start this web application just follow these steps:
 
 * All REST endpoints can be tested locally with the Swagger UI frontend:
 
-    [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+    http://localhost:8080/swagger-ui.html
 
 #### Assumption
 
