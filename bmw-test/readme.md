@@ -69,7 +69,7 @@ To start this web application just follow these steps:
     After application has been already started, to execute the bash file `uploadCSV.bat` being able to upload the `data.csv` into embedded database of this application. 
 
     ```
-    uploadCSV.bat
+    Upload_CSV_Shell_Script.bat
     --------------
     @echo off
     curl -F file=@"./data.csv" -u bmw:bmw http://localhost:8080/api/v1/vehicles/savePositions/csv
