@@ -58,8 +58,8 @@ public class VehicleController {
 	 *            position of vehicle
 	 * @return http status
 	 */
-	@RequestMapping(value = "{vin}/savePosition", method = RequestMethod.POST)
-	public ResponseEntity<String> savePosition(@PathVariable("vin") String vin, @RequestBody Position position) {
+	@RequestMapping(value = "{vin}/positions", method = RequestMethod.POST)
+	public ResponseEntity<String> createPosition(@PathVariable("vin") String vin, @RequestBody Position position) {
 		log.debug("Saving position with a certain vin");
 		vehicleService.savePosition(vin, position);
 		return new ResponseEntity<String>("save position successfully", HttpStatus.OK);
@@ -76,9 +76,9 @@ public class VehicleController {
 	 * @throws Exception
 	 *             if uploaded file is empty
 	 */
-	@RequestMapping(value = "/savePosition/csv", method = RequestMethod.POST)
-	public ResponseEntity<String> savePositionByCsv(@RequestParam("file") MultipartFile file,
-			HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "/positions", method = RequestMethod.POST)
+	public ResponseEntity<String> createPosition(@RequestParam("file") MultipartFile file, HttpServletRequest request)
+			throws Exception {
 		log.debug("Uploading csv data");
 		if (file.isEmpty()) {
 			throw new Exception("uploaded file must be not empty");
@@ -99,7 +99,7 @@ public class VehicleController {
 	 * @throws ExecutionException
 	 */
 
-	@RequestMapping(value = "/{vin}/getAllSessions", method = RequestMethod.GET)
+	@RequestMapping(value = "/{vin}/position_sessions", method = RequestMethod.GET)
 	public ResponseEntity<List<Position>> getAllSessions(@PathVariable("vin") String vin)
 			throws InterruptedException, ExecutionException {
 		log.debug("Getting all sessions of a vehicle");
@@ -119,9 +119,9 @@ public class VehicleController {
 	 * @throws ExecutionException
 	 * @throws InterruptedException
 	 */
-	@RequestMapping(value = "/{vin}/getSingleSession/session", method = RequestMethod.GET)
+	@RequestMapping(value = "/{vin}/position_sessions/{session_id}", method = RequestMethod.GET)
 	public ResponseEntity<List<Position>> getSingleSession(@PathVariable("vin") String vin,
-			@RequestParam("session") String session) throws ExecutionException, InterruptedException {
+			@PathVariable("session_id") String session) throws ExecutionException, InterruptedException {
 		log.debug("Assumption 1 : Getting single session passing by session id");
 		List<Position> positions = vehicleService.findPositionsBySession(vin, session);
 		return new ResponseEntity<List<Position>>(positions, HttpStatus.OK);
@@ -138,9 +138,9 @@ public class VehicleController {
 	 * @throws InterruptedException
 	 * @throws ExecutionException
 	 */
-	@RequestMapping(value = "/{vin}/getSingleSession/timestamp", method = RequestMethod.GET)
+	@RequestMapping(value = "/{vin}/sessions?timestamp={timestamp}", method = RequestMethod.GET)
 	public ResponseEntity<Position> getSingleSession(@PathVariable("vin") String vin,
-			@RequestParam("timestamp") Long timestamp) throws InterruptedException, ExecutionException {
+			@PathVariable("timestamp") Long timestamp) throws InterruptedException, ExecutionException {
 		log.debug("Assumption 2: Getting single session passing by timestamp");
 		Position position = vehicleService.findPositionByTimestamp(vin, timestamp);
 		return new ResponseEntity<Position>(position, HttpStatus.OK);
@@ -155,7 +155,7 @@ public class VehicleController {
 	 * @throws InterruptedException
 	 * @throws ExecutionException
 	 */
-	@RequestMapping(value = "/{vin}/lastPosition/", method = RequestMethod.GET)
+	@RequestMapping(value = "/{vin}/positions/last", method = RequestMethod.GET)
 	public ResponseEntity<Position> getLastPosition(@PathVariable("vin") String vin)
 			throws InterruptedException, ExecutionException {
 		log.debug("Getting the last position of certain vehicle");
