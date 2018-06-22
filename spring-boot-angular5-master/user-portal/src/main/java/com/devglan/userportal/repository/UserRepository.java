@@ -1,6 +1,8 @@
-package com.devglan.userportal;
+package com.devglan.userportal.repository;
 
 import org.springframework.data.repository.Repository;
+
+import com.devglan.userportal.model.User;
 
 import java.util.List;
 

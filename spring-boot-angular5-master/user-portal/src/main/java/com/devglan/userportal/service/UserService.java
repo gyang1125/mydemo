@@ -1,6 +1,8 @@
-package com.devglan.userportal;
+package com.devglan.userportal.service;
 
 import java.util.List;
+
+import com.devglan.userportal.model.User;
 
 public interface UserService {
 
