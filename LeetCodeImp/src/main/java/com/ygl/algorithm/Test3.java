@@ -1,4 +1,4 @@
-package com.ygl.es.job;
+package com.ygl.algorithm;
 
 /**
  * 水仙花 number == x * x * x + y * y * y + z * z * z
