@@ -8,7 +8,7 @@ import java.util.Scanner;
  * 最小公倍数Least Common Multiple(LCM)：几个数，都能被同一个数整出，这就是他们的最小公倍数。 几个数的乘积除以它们的最大公约数。
  * 
  */
-public class Test6 {
+public class GreatestCommonDivisor {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		int a = input.nextInt();

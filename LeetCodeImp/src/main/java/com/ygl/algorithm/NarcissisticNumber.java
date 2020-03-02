@@ -4,7 +4,7 @@ package com.ygl.algorithm;
  * 水仙花 number == x * x * x + y * y * y + z * z * z
  *
  */
-public class Test3 {
+public class NarcissisticNumber {
 	public static void main(String[] args) {
 		for (int i = 101; i <= 999; i++) {
 			if (getNarcissisticNumber(i))

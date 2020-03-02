@@ -6,7 +6,7 @@ import java.util.Scanner;
  * 分解质因子 90 = 2*3*3*5
  *
  */
-public class Test4 {
+public class PrimeFactorization {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		int n = input.nextInt();

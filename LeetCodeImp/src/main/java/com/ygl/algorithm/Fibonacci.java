@@ -5,7 +5,7 @@ package com.ygl.algorithm;
  * 1, 1, 2, 3, 5, 8
  *
  */
-public class Test1 {
+public class Fibonacci {
 	public static void main(String[] args) {
 		getF(10);
 
