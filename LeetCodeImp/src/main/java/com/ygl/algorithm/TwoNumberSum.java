@@ -18,7 +18,7 @@ import java.util.Map;
  * HashMap利用hashcode列表查找时间复杂度为O(1)，所以内层比再用一次for要好。
  * 
  */
-public class Test7 {
+public class TwoNumberSum {
 	public static void main(String[] args) {
 
 	}
