@@ -4,7 +4,8 @@ import java.util.Stack;
 
 /**
  * 
- * 模式5：每一个递归的答案，其实都可以转化成一个迭代解，但需要借助于栈。Stack
+ * 模式5：每一个递归的答案，其实都可以转化成一个迭代解，但需要借助于栈。<br>
+ * Stack是一个后进先出LIFO的数据结构，每一个push进去的元素都会排在栈顶。peek取但不删，pop取后删除。
  *
  */
 public class StackIterative {
