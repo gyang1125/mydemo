@@ -14,11 +14,12 @@ package com.ygl.search;
 public class BinarySearch {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] data = {1, 4, 6, 18, 34, 89, 77};
+		int target = 34;
+		System.out.println(binarysearch1(data, 0, data.length-1, 34));
 	}
 
-	int binarysearch1(int array[], int low, int high, int target) {
+	static int binarysearch1(int array[], int low, int high, int target) {
 		if (low > high)
 			return -1;
 		int mid = low + (high - low) / 2;

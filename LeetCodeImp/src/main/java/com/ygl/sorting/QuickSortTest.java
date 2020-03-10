@@ -32,6 +32,7 @@ public class QuickSortTest {
 			arr[j] = temp;
 
 		}
+		//循环结束，i = j，连个指针指向同一个元素
 		arr[start] = arr[i];
 		arr[i] = pivot;
 
