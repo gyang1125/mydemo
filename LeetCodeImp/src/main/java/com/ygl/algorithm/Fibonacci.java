@@ -6,9 +6,9 @@ package com.ygl.algorithm;
  */
 public class Fibonacci {
 	public static void main(String[] args) {
-		for (int i = 0; i <= 5; i++) {
+		for (int i = 1; i <= 5; i++) {
 			fib(i);
-			System.out.println("--");
+			System.out.println(fib(i));
 		}
 
 	}
@@ -24,14 +24,14 @@ public class Fibonacci {
 	}
 
 	public static int fib(int n) {
-		System.out.println("input index: " + n);
+//		System.out.println("input index: " + n);
 		if (n <= 1) {
-			System.out.println("return leaf: " + n);
+//			System.out.println("return leaf: " + n);
 			return n;
 
 		} else {
 			int sum = fib(n - 1) + fib(n - 2);
-			System.out.println("return sum: " + sum);
+//			System.out.println("return sum: " + sum);
 			return sum;
 		}
 	}
