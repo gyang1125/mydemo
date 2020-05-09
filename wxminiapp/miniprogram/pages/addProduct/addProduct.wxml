@@ -1,0 +1,6 @@
+<form bindsubmit="onSubmit">
+  name: <input name="name" placeholder="Enter the name"></input>
+  price: <input name="price" placeholder="Enter the price"></input>
+  description: <input name="desc" placeholder="Enter the describtion of the product"></input>
+  <button form-type="submit">enter</button>
+</form>
