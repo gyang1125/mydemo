@@ -1,45 +1,33 @@
-/.metadata/
-/.recommenders/
-/Servers
-/RemoteSystemsTempFiles
-*#
-*.iml
-*.ipr
-*.iws
-*.jar
-*.sw?
-*~
-.#*
-.*.md.html
-.DS_Store
-.classpath
-.factorypath
-.gradle
-.idea
-.metadata
-.project
-.recommenders
-.settings
-.springBeans
-/build
-/code
-MANIFEST.MF
-_site/
-activemq-data
-bin
-build
-build.log
-dependency-reduced-pom.xml
-dump.rdb
-interpolated*.xml
-lib/
-manifest.yml
-overridedb.*
-settings.xml
+# Folder config file
+Desktop.ini
+
+# java class file
+*.class
+
+# Package Files #
+*.war
+*.ear
+/target
+/.settings
+/.classpath
+/.project
+/.idea
+
+# ignore Maven generated target folders
 target
-transaction-logs
-.flattened-pom.xml
-secrets.yml
+out
+
+# ignore eclipse files
+.project
+.classpath
+.settings
+.factorypath
+.metadata
+.idea
+*.iml
+
+# ignore log files
+*.log
 
 # 前段忽略的项目
 # Numerous always-ignore extensions
