@@ -1,0 +1,56 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+<!-- 搜索 -->
+<input class="search" type="text" confirm-type="search" placeholder="请搜索喜欢的商品">
+  
+</input>
+<!-- 首页轮播图 -->
+ <swiper autoplay circular indicator-dots>
+    <swiper-item>
+      <navigator url="/pages/login/login" open-type="switchTab">
+        <image src="/images/temp/banner1.jpg" mode="aspectFill">
+        </image>
+      </navigator>
+    </swiper-item>
+    <swiper-item>
+      <navigator url="/pages/login/login" open-type="switchTab" >
+        <image src="/images/temp/banner2.jpg"  mode="aspectFill"></image>
+      </navigator>
+    </swiper-item>
+    <swiper-item>
+      <navigator url="/pages/login/login" open-type="switchTab" >
+        <image src="/images/temp/banner3.jpg" mode="aspectFill"></image>
+      </navigator>
+    </swiper-item>
+    <swiper-item>
+      <navigator url="/pages/login/login" open-type="switchTab" >
+        <image src="/images/temp/banner4.jpg" mode="aspectFill"></image>
+      </navigator>
+    </swiper-item>
+ </swiper>
+
+ <!-- 导航菜单 -->
+   <view class="nav">
+      <view class="menu" wx:for="{{navList}}" wx:key="{{index}}">
+        <image src="{{item.src}}"></image>
+         <text>{{item.title}}</text>
+      </view>
+   </view>
+</view>
+
+<!-- 产品列表 -->
+<text class="hot"> 热卖产品 </text>
+<view class="wrap">  
+<!-- class="product"  -->
+  <navigator url="/pages/detail/detail?id={{item.id}}" wx:for="{{productList}}" wx:key="{{index}}" class="product">
+    <image src="{{item.src}}" mode="widthFix"></image>
+    <view class="info">
+      <text class="name">{{item.name}}</text>
+      <text class="price">￥{{item.price}}元</text>
+    </view>
+  </navigator>
+</view>
+
+
+
+

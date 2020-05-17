@@ -1,0 +1,71 @@
+<view class="userInfo">
+  <view class="heard">
+    <open-data type="userAvatarUrl" ></open-data>
+  </view>
+  <view class="account">
+   <open-data type="userNickName"></open-data>
+   <text>商城ID:13812345678</text>
+  </view>
+</view>
+
+<view class="list">
+
+  <view class="order" >
+      <image src="/images/temp/share_moment.png" mode="widthFix"></image>
+      <view class="order-detail">
+        <text>我的订单</text>
+        <text> > </text>
+      </view>
+  </view>
+  <view class="order" >
+      <image src="/images/temp/share_qq.png"  mode="widthFix"></image>
+      <view class="order-detail">
+        <text>我的钱包</text>
+        <text> > </text>
+      </view>
+  </view>
+  <view class="order" >
+      <image src="/images/temp/share_qqzone.png" mode="widthFix"></image>
+        <view class="order-detail">
+        <text>浏览记录</text>
+        <text> > </text>
+      </view>
+  </view>
+  <view class="order" >
+      <image src="/images/temp/share_wechat.png" mode="widthFix"></image>
+      <view class="order-detail">
+        <text>已收货</text>
+        <text> > </text>
+      </view>
+  </view>
+   <view class="order" >
+      <image src="/images/temp/share_moment.png" mode="widthFix"></image>
+      <view class="order-detail">
+        <text>我的订单</text>
+        <text> > </text>
+      </view>
+  </view>
+  <view class="order" >
+      <image src="/images/temp/share_qq.png"  mode="widthFix"></image>
+      <view class="order-detail">
+        <text>我的钱包</text>
+        <text> > </text>
+      </view>
+  </view>
+  <view class="order" >
+      <image src="/images/temp/share_qqzone.png" mode="widthFix"></image>
+        <view class="order-detail">
+        <text>浏览记录</text>
+        <text> > </text>
+      </view>
+  </view>
+  <view class="order" >
+      <image src="/images/temp/share_wechat.png" mode="widthFix"></image>
+      <view class="order-detail">
+        <text>已收货</text>
+        <text> > </text>
+      </view>
+  </view>
+
+</view>
+
