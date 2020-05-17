@@ -1,26 +1,25 @@
 {
   "pages": [
-  "pages/my/my",
-   "pages/index/index",
+    "pages/my/my",
+    "pages/index/index",
     "pages/cart/cart",
-    
+
     "pages/shopping/shopping",
     "pages/login/login",
     "pages/detail/detail",
     "pages/classtype/class/type"
-    
+
   ],
   "window": {
-    "navigationBarBackgroundColor": "#576b95",
+    "navigationBarBackgroundColor": "#eb4450",
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "小胖商城",
+    "navigationBarTitleText": "欧洲葡萄酒精选平台",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": false
   },
   "tabBar": {
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "主页",
         "iconPath": "images/tab-home.png",
