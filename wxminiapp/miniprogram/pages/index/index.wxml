@@ -1,43 +1,56 @@
-<view class="search">
-	<van-search
-  value="{{ searchvalue }}"
-  placeholder="请输入搜索关键词"
-  use-action-slot
-  bind:change="onChange"
-  bind:search="onSearch"
->
-  <view slot="action" bind:tap="onClick">搜索</view>
-</van-search>
+<!--pages/index/index.wxml-->
+<view class="container">
+<!-- 搜索 -->
+<input class="search" type="text" confirm-type="search" placeholder="请搜索喜欢的商品">
+  
+</input>
+<!-- 首页轮播图 -->
+ <swiper autoplay circular indicator-dots>
+    <swiper-item>
+      <navigator url="/pages/login/login" open-type="switchTab">
+        <image src="/images/temp/banner1.jpg" mode="aspectFill">
+        </image>
+      </navigator>
+    </swiper-item>
+    <swiper-item>
+      <navigator url="/pages/login/login" open-type="switchTab" >
+        <image src="/images/temp/banner2.jpg"  mode="aspectFill"></image>
+      </navigator>
+    </swiper-item>
+    <swiper-item>
+      <navigator url="/pages/login/login" open-type="switchTab" >
+        <image src="/images/temp/banner3.jpg" mode="aspectFill"></image>
+      </navigator>
+    </swiper-item>
+    <swiper-item>
+      <navigator url="/pages/login/login" open-type="switchTab" >
+        <image src="/images/temp/banner4.jpg" mode="aspectFill"></image>
+      </navigator>
+    </swiper-item>
+ </swiper>
+
+ <!-- 导航菜单 -->
+   <view class="nav">
+      <view class="menu" wx:for="{{navList}}" wx:key="{{index}}">
+        <image src="{{item.src}}"></image>
+         <text>{{item.title}}</text>
+      </view>
+   </view>
 </view>
 
-<swiper indicator-dots autoplay circular>
-	<swiper-item wx:for="{{banners}}" wx:key="_id">
-		<navigator url="{{item.url}}">
-			<image src="{{item.src}}"></image>
-		</navigator>
-	</swiper-item>
-</swiper>
-
-<view class="menu">
-	<view wx:for="{{menu}}" wx:key="_id" class="menuSub">
-		<image src="{{item.src}}"></image>
-		<text>{{item.name}}</text>
-	</view>
+<!-- 产品列表 -->
+<text class="hot"> 热卖产品 </text>
+<view class="wrap">  
+<!-- class="product"  -->
+  <navigator url="/pages/detail/detail?id={{item.id}}" wx:for="{{productList}}" wx:key="{{index}}" class="product">
+    <image src="{{item.src}}" mode="widthFix"></image>
+    <view class="info">
+      <text class="name">{{item.name}}</text>
+      <text class="price">￥{{item.price}}元</text>
+    </view>
+  </navigator>
 </view>
 
-<view class="product">
-	<navigator url="../detail/detail?id={{item._id}}" class="productSub" wx:for="{{products}}" wx:key="_id">
-		<image src="{{item.src}}"></image>
-		<view class="productInfo">
-			<view><label>{{item.name}}</label></view>
-			<view><label>{{item.price}}€</label></view> 
-		</view>
-	</navigator>
-</view>
 
-<van-tabbar active="{{ active }}" bind:change="onChange">
-	<van-tabbar-item icon="home-o">主页</van-tabbar-item>
-	<van-tabbar-item icon="shopping-cart-o" info="{{carNumber>0?carNumber:''}}">购物车</van-tabbar-item>
-	<van-tabbar-item icon="todo-list-o">订单</van-tabbar-item>
-	<van-tabbar-item icon="manager-o">我的</van-tabbar-item>
-</van-tabbar>
+
+

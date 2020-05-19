@@ -1,82 +1,124 @@
-/*搜索样式*/
-.search{
-  width: 100%;
-  position: sticky;
-  left: 0;
-  top: 0;
-  z-index:10;
+.container{
+  display: flex;
+  flex-direction: column;
+  padding:  10rpx 16rpx; 
+  background-color:#576b95;
+  border-bottom-left-radius: 16rpx;
+   border-bottom-right-radius: 16rpx;
 }
-/*滚动条样式*/
+.search{
+  display: flex;
+  height: 60rpx;
+  border: 1px solid white;
+  padding-left: 20rpx;
+  color: #666;
+  border-radius: 30rpx;
+  margin: 10rpx 0;
+  font-size: 22rpx;
+  background-color: white;
+ 
+}
+
 swiper{
-  height: 375rpx;
-  width: 96%;
-  align-self: center;
-  border-radius: 16rpx;
-  overflow: hidden;
+  width: 100%;
+  height: 260rpx;
 }
 
 swiper image{
   width: 100%;
+  border-radius: 16rpx;
+  height: 258rpx;
 }
-/* 菜单按钮样式 */
-.menu{
+
+
+/* 菜单 */
+
+.nav{
   display: flex;
-  width: 96%;
-  margin-top: 20rpx;
   flex-direction: row;
   flex-wrap: wrap;
-  border: 1px solid rgb(112,110,110);
-  border-radius: 20rpx;
-  background-color: white;
-  padding-bottom: 10rpx;
-  padding-top: 10rpx;
-  align-self: center;
+  justify-content: space-between;
+  background-color: #eee;
+  border-radius: 16rpx;
+  padding: 0 20rpx;
+  margin-top: 10rpx;
+
+}
+.nav .menu{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10rpx;
 }
 
-.menu .menuSub{
-  display: flex;
-  width: 25%;
-  align-content: space-around;
-  flex-direction: column;
-  align-items: center;
+.menu text{
+  font-size: 22rpx;
+  color: #666;
+  margin-top: 10rpx;
 }
 .menu image{
-  width: 100rpx;
-  height: 100rpx;
+  width:60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-top: 16rpx;
 }
-/*产品样式*/
-.product{
-  display: flex;
-  width: 96%;
-  flex-wrap: wrap;
-  padding-bottom: 120rpx;
+.hot{
+  display: block;
+  text-align: center;
+  margin: 10rpx 0;
 }
 
-.product .productSub{
+/* 产品列表 */
+
+.wrap{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #576b95;
+  justify-content: center;
+}
+
+.wrap .product{
   display: flex;
   flex-direction: column;
-  align-content: space-between;
-  margin-left: 2%;
-  width: 48%;
+  justify-content: center;
   align-items: center;
-  border-radius: 30rpx;
-  overflow: hidden;
-  margin-top: 10rpx;
-  background-color: white;
+  width: 46%;
+  margin: 6rpx 10rpx;
+  background-color: #666;
+   border-bottom-left-radius: 16rpx;
+  border-bottom-right-radius: 16rpx;
 }
 
 .product image{
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
   width: 100%;
-  height: 300rpx;
 }
-
-
-.productInfo{
-  margin-top: 10rpx;
+.info{
+  padding: 0 10rpx;
+  width: 100%;
   display: flex;
-  width: 100%;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
-  background-color: gainsboro;
-  align-content: center;
+
+ 
+  
 }
+.name{
+  color: white;
+}
+
+.info .price{
+  color: red;
+}
+
+
+
+
+
+
+
+

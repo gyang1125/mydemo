@@ -1,0 +1,23 @@
+<view class="wrap">
+	<view class="logo">
+		<image src="../../images/logo.png"></image>
+		<text>Beauty Wine</text>
+	</view>
+	<view wx:if="{{emptyMsg}}" class="errMsg">用户名或密码不能为空</view>
+	<view class="login">
+		<form bindsubmit="login">
+			<view class="username">
+				<label>用户名</label>
+				<input type="text" name="username" placeholder="用户名" bindinput="hideErrMsg"></input>
+			</view>
+			<view class="pwd">
+				<label>密码</label>
+				<input type="password" name="pwd" placeholder="密码" bindinput="hideErrMsg"></input>
+			</view>
+			<view wx:if="{{showMsg}}" class="errMsg">
+				<label >用户名或密码不正确</label>
+			</view>
+			<button form-type="submit">登陆</button>
+		</form>
+	</view>
+</view>

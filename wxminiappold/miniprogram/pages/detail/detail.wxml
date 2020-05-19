@@ -1,0 +1,23 @@
+<view class="wrap">
+	<swiper circular indicator-dots autoplay>
+		<swiper-item wx:for="{{product.detailImage}}" wx:key="_id">
+			<image src="{{item}}" class="topImage" model="scaleToFill"></image>
+		</swiper-item>
+	</swiper>
+	<view class="detail_info">
+		<text>{{product.name}}</text>
+		<text>￥{{product.price}}.00元</text>
+	</view>
+	<view class="middle">
+		<text class="dot">直</text><text>欧洲直邮</text>
+		<text class="dot">精</text><text>优质精选</text>
+	</view>
+	<image class="detail_info_image" src="{{item}}" mode="widthFix" wx:for="{{product.detailInfoImage}}" wx:key="null"></image>
+</view>
+
+<van-goods-action>
+	<van-goods-action-icon icon="chat-o" text="客服" bind:click="onClickIcon" dot />
+	<van-goods-action-icon icon="cart-o" text="购物车" bind:click="onClickIcon" info="{{carNumber>0?carNumber:''}}" />
+	<van-goods-action-button text="加入购物车" type="warning" bind:click="onClickButton" />
+	<van-goods-action-button text="立即购买" bind:click="onClickButton" />
+</van-goods-action>

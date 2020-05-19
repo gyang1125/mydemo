@@ -1,71 +1,60 @@
-const db = wx.cloud.database();
-const users = db.collection("users")
-var app = getApp()
+// pages/login/login.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showMsg:false,
-    emptyMsg:false
+    phone_number:'',
+    code:''
   },
-  login(event){
-    console.log(event.detail.value.username)
-    let username = event.detail.value.username;
-    let pwd = event.detail.value.pwd;
-    if(username.length == 0 || pwd.length == 0){
-      // wx.showToast({
-      //   title: '用户名或密码不能为空',
-      // })
-      this.setData({
-        emptyMsg:true
-      })
-      return
-    }
-    db.collection('users').where({
-      name:username,
-      pwd:pwd
-    }).get().then(res=>{
-      console.log(res.data)
-      if(res.data[0] == null) {
-        this.setData({
-          showMsg:true
-        })
-        return
-      }else {
-        this.setData({
-          showMsg:false
-        })
-        app.user = res.data[0]; // gloabl variable
-        console.log(app.user.name)
-        wx.redirectTo({
-          url: '../index/index',
-        })
-      }
+  // 获取手机号码
+  getPhone:function(e){
+    this.setData({
+      phone_number: e.detail.value
     })
+    if(this.data.phone_number.length != 11){
+      wx.showToast({
+        title: '手机号码错误',
+      })
+      return;
+    }
+    console.log(this.data.phone_number);
+  },
+  // 获取验证码
+  getCode:function(e){
+    this.setData({
+      code: e.detail.value
+    })
+    console.log(this.data.code)
   },
 
-  hideErrMsg(event){
-    if(event.detail.value.length > 0){
-      this.setData({
-        emptyMsg:false
+  // 登陆的方法
+  login:function(){
+      wx.request({
+        url: 'http://www.hengyishun.cn/login/login',
+        data:({
+          phone:this.data.phone_number,
+          code: this.data.code
+        })
+        ,
+        success(res){
+          if(res.data == "true"){
+            wx.showToast({
+              title: '登陆成功',
+            });
+            wx.switchTab({
+              url:'/pages/index/index'
+            })
+          }
+        }
       })
-    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.cloud.callFunction({
-    //   name:'addUser',
-    //   data:{
-    //     name:'Guilin',
-    //     pwd:'1234'
-    //   }
-    // }).then(res=>{
-    //   console.log(res);
-    // })
+
   },
 
   /**

@@ -1,0 +1,56 @@
+/* 容器 */
+.container{
+   width: 100%;
+   display: flex;
+   flex-direction:row; 
+}
+
+.menu{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #225599;
+  justify-content: start;
+  align-items: center;
+}
+
+.menu .classtype{
+   margin: 16rpx 0;
+}
+
+.classtype text{
+  color: white;
+  font-weight: 500;
+}
+
+.list{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.list .productList{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;  
+}
+
+.productList .info{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+}
+
+image{
+  width:300rpx;
+}
+
+
+
+
+
+
+

@@ -1,82 +1,56 @@
-.wrap{
+/* 这是容器的样式 */
+.container{
+
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  width:100%;
-  height:100vh;
-  background-color: gainsboro;
-  align-self: center;
+  padding: 30rpx;
 }
-
-.logo{
+/* 这是文本的样式 */
+text{
+  font-size: 40rpx;
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  margin-top: 16rpx;
-  padding-top: 20rpx;
-  padding-bottom: 20rpx;
-  background-color: white;
-  border-top-left-radius: 20rpx;
-  border-top-right-radius: 20rpx;
+  justify-content: center;
 }
 
-.logo image{
-   width: 200rpx;
-   height: 200rpx;
-   overflow: hidden;
-   border-radius: 30rpx;
+input{
+  border: 2rpx solid  #336699;
+  height: 90rpx;
+  border-radius: 12rpx;
+  padding-left: 16rpx;
+}
+.phone_number{
+  margin: 16rpx 0;
 }
 
-.login{
-  width: 100%;
-  margin-top: 10rpx;
-  background-color: white;
-  border-bottom-left-radius: 30rpx;
-  border-bottom-right-radius: 30rpx;
-  padding-bottom: 15rpx;
-}
-
-.login form{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-form .username, .pwd{
+.code{
   display: flex;
   flex-direction: row;
-  align-items: center;
   width: 100%;
-  height: 100rpx;
-  border-bottom: 1px solid gainsboro;
-  font-size: 28rpx;
-  padding-left: 20rpx;
-
-}
-form .username input{
-  margin-left: 20rpx;
-  flex: 5;
-}
-form label{
-  flex: 1
-}
-form .pwd input{
-  margin-left: 20rpx;
-  flex: 5;
+  margin-bottom: 16rpx;
 }
 
-button{
-  height: 100rpx;
-  width: 96%;
-  line-height: 100rpx;
-  background-color: rgb(99, 236, 152);
+/* 验证码输入框样式 */
+
+.code_number{
+  flex: 1;
+}
+
+.btn_code{
+  background-color: #576b95;
+  margin-left: 16rpx;
   color: white;
-  margin-top: 10rpx;
+  font-size: 32rpx;
 }
 
-.errMsg{
-  font-size: 20rpx;
-  color: rgb(228, 48, 48);
-  width: 100%;
-  text-align: center;
-  margin-top: 10rpx;
+/* 登陆按钮样式 */
+.btn_login{
+  background-color:#09bb07; 
+  color: white;
 }
+
+
+
+
+
+

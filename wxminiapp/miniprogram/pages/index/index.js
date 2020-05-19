@@ -9,119 +9,104 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: 0,
     products: [],
     banners: [],
     menu: [],
-    searchvalue: ''
+    navList: [],
+    productList: [
+      {
+        "id": 1,
+        "name": "华为Mate 30",
+        "src": "/images/temp/cate1.jpg",
+        "price": 4099
+      },
+      {
+        "id": 2,
+        "name": "华为Mate 30",
+        "src": "/images/temp/cate2.jpg",
+        "price": 4099
+      },
+      {
+        "id": 3,
+        "name": "华为Mate 30",
+        "src": "/images/temp/cate3.jpg",
+        "price": 4099
+      },
+      {
+        "id": 4,
+        "name": "华为Mate 30",
+        "src": "/images/temp/cate4.jpg",
+        "price": 4099
+      },
+      {
+        "id": 5,
+        "name": "华为Mate 30",
+        "src": "/images/temp/cate5.jpg",
+        "price": 4099
+      },
+      {
+        "id": 6,
+        "name": "华为Mate 30",
+        "src": "/images/temp/cate6.jpg",
+        "price": 4099
+      },
+      {
+        "id": 7,
+        "name": "华为Mate 30",
+        "src": "/images/temp/cate7.jpg",
+        "price": 4099
+      },
+      {
+        "id": 8,
+        "name": "华为Mate 30",
+        "src": "/images/temp/cate8.jpg",
+        "price": 4099
+      },
+      {
+        "id": 9,
+        "name": "华为Mate 30",
+        "src": "/images/temp/cate9.jpg",
+        "price": 4099
+      },
+      {
+        "id": 10,
+        "name": "华为Mate 30",
+        "src": "/images/temp/cate10.jpg",
+        "price": 4099,
+        checked: true
+      },]
+  },
+  getNavList: function () {
+    let that = this;
+    wx.request({
+      url: 'http://www.hengyishun.cn/login/navlist',
+      success(res) {
+        that.setData({
+          navList: res.data
+        })
+      }
+    })
+
   },
 
-  onChange(event) {
-    console.log(event.detail)
-    // event.detail 的值为当前选中项的索引
-    this.setData({ 
-      active: event.detail
-    });
-    // Tabbar 切换
-    switch(event.detail) {
-      case 1:
-        wx.navigateTo({
-          url: '../cart/cart',
-        });
-        break;
-      case 2:
-        wx.navigateTo({
-          url: 'url',
-        });
-        break;
-      case 3:
-        wx.navigateTo({
-          url: '../me/me',
-        });
-        break;
-    }
+  getProductList: function () {
+    let that = this;
+    wx.request({
+      url: 'http://localhost:8080/product/hello',
+      success(res) {
+        that.setData({
+          productList: res.data
+        })
+      }
+    })
 
-  },
-
-  onSearch() {
-    console.log(this.data.searchvalue)
-  },
-
-  onClick() {
-    console.log(this.data.searchvalue)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 广告条幅
-    banners.get().then(res => {
-      console.log(res.data)
-      this.setData({
-        banners: res.data
-      })
-    })
-    // 菜单栏
-    menu.get().then(res=>{
-      console.log(res.data)
-      this.setData({
-        menu: res.data
-      })
-    })
-    // 产品列举
-    products.get().then(res => {
-      console.log(res.data)
-      this.setData({
-        products: res.data
-      })
-    })
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+   // this.getNavList();
+    //this.getProductList();
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
