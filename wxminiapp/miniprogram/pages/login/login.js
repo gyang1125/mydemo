@@ -5,15 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    phone_number:'',
-    code:''
+    phone_number: '',
+    code: ''
   },
   // 获取手机号码
-  getPhone:function(e){
+  getPhone: function (e) {
     this.setData({
       phone_number: e.detail.value
     })
-    if(this.data.phone_number.length != 11){
+    if (this.data.phone_number.length != 11) {
       wx.showToast({
         title: '手机号码错误',
       })
@@ -22,7 +22,7 @@ Page({
     console.log(this.data.phone_number);
   },
   // 获取验证码
-  getCode:function(e){
+  getCode: function (e) {
     this.setData({
       code: e.detail.value
     })
@@ -30,25 +30,25 @@ Page({
   },
 
   // 登陆的方法
-  login:function(){
-      wx.request({
-        url: 'http://www.hengyishun.cn/login/login',
-        data:({
-          phone:this.data.phone_number,
-          code: this.data.code
-        })
-        ,
-        success(res){
-          if(res.data == "true"){
-            wx.showToast({
-              title: '登陆成功',
-            });
-            wx.switchTab({
-              url:'/pages/index/index'
-            })
-          }
-        }
+  login: function () {
+    wx.request({
+      url: 'http://www.hengyishun.cn/login/login',
+      data: ({
+        phone: this.data.phone_number,
+        code: this.data.code
       })
+      ,
+      success(res) {
+        if (res.data == "true") {
+          wx.showToast({
+            title: '登陆成功',
+          });
+          wx.switchTab({
+            url: '/pages/index/index'
+          })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载

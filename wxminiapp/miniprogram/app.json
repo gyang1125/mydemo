@@ -6,41 +6,47 @@
     "pages/shopping/shopping",
     "pages/login/login",
     "pages/detail/detail",
-    "pages/classtype/class/type"
-
+    "pages/classtype/class/type",
+    "pages/search/search"
   ],
   "window": {
     "navigationBarBackgroundColor": "#eb4450",
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "欧洲葡萄酒精选平台",
-    "backgroundColor": "#eeeeee",
+    "backgroundColor": "#eb4450",
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": false
   },
   "tabBar": {
-    "list": [{
+    "color": "#999",
+    "selectedColor": "#ff2d4a",
+    "backgroundColor": "#fafafa",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
         "pagePath": "pages/index/index",
-        "text": "主页",
-        "iconPath": "images/tab-home.png",
-        "selectedIconPath": "images/tab-home-current.png"
+        "text": "首页",
+        "iconPath": "icons/home.png",
+        "selectedIconPath": "icons/home-o.png"
       },
       {
         "pagePath": "pages/classtype/class/type",
         "text": "分类",
-        "iconPath": "images/tab-cate.png",
-        "selectedIconPath": "images/tab-cate-current.png"
+        "iconPath": "icons/category.png",
+        "selectedIconPath": "icons/category-o.png"
       },
       {
         "pagePath": "pages/cart/cart",
         "text": "购物车",
-        "iconPath": "images/tab-cart.png",
-        "selectedIconPath": "images/tab-cart-current.png"
+        "iconPath": "icons/cart.png",
+        "selectedIconPath": "icons/cart-o.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "images/tab-my.png",
-        "selectedIconPath": "images/tab-my-current.png"
+        "iconPath": "icons/my.png",
+        "selectedIconPath": "icons/my-o.png"
       }
     ]
   },

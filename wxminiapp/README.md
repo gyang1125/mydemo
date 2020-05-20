@@ -10,3 +10,9 @@
 
 - [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
 
+# 云数据库架构
+## 轮播图数据库 banners
+- src: 云存储banners中的图片路径
+- name: 唯一表示该商品的属性（命名规则:地区_商品名_日期），不用于云数据库自增id
+- url: /pages/detail/detail/?product_id=123
+- 图片大小750 * 340

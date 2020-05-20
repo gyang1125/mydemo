@@ -1,56 +1,39 @@
-<!--pages/index/index.wxml-->
-<view class="container">
-<!-- 搜索 -->
-<input class="search" type="text" confirm-type="search" placeholder="请搜索喜欢的商品">
-  
-</input>
-<!-- 首页轮播图 -->
- <swiper autoplay circular indicator-dots>
-    <swiper-item>
-      <navigator url="/pages/login/login" open-type="switchTab">
-        <image src="/images/temp/banner1.jpg" mode="aspectFill">
-        </image>
-      </navigator>
-    </swiper-item>
-    <swiper-item>
-      <navigator url="/pages/login/login" open-type="switchTab" >
-        <image src="/images/temp/banner2.jpg"  mode="aspectFill"></image>
-      </navigator>
-    </swiper-item>
-    <swiper-item>
-      <navigator url="/pages/login/login" open-type="switchTab" >
-        <image src="/images/temp/banner3.jpg" mode="aspectFill"></image>
-      </navigator>
-    </swiper-item>
-    <swiper-item>
-      <navigator url="/pages/login/login" open-type="switchTab" >
-        <image src="/images/temp/banner4.jpg" mode="aspectFill"></image>
-      </navigator>
-    </swiper-item>
- </swiper>
-
- <!-- 导航菜单 -->
-   <view class="nav">
-      <view class="menu" wx:for="{{navList}}" wx:key="{{index}}">
-        <image src="{{item.src}}"></image>
-         <text>{{item.title}}</text>
-      </view>
-   </view>
-</view>
-
-<!-- 产品列表 -->
-<text class="hot"> 热卖产品 </text>
-<view class="wrap">  
-<!-- class="product"  -->
-  <navigator url="/pages/detail/detail?id={{item.id}}" wx:for="{{productList}}" wx:key="{{index}}" class="product">
-    <image src="{{item.src}}" mode="widthFix"></image>
-    <view class="info">
-      <text class="name">{{item.name}}</text>
-      <text class="price">￥{{item.price}}元</text>
+<view class="bw_index">
+    <!-- 搜索框 开始 -->
+    <searchinput></searchinput>
+    <!-- 搜索框 结束 -->
+    <!-- 轮播图 开始 -->
+    <view class="index_swiper">
+        <swiper indicator-dots autoplay circular>
+            <swiper-item wx:for="{{banners}}" wx:key="name">
+                <navigator url="{{item.url}}">
+                    <image src="{{item.src}}"></image>
+                </navigator>
+            </swiper-item>
+        </swiper>
     </view>
-  </navigator>
+    <!-- 轮播图 结束 -->
+    <!-- 导航 开始 -->
+    <view class="index_cate">
+        <navigator wx:for="{{menu}}" wx:key="_id">
+            <image mode="widthFix" src="{{item.src}}" />
+        </navigator>
+    </view>
+    <!-- 导航 结束 -->
+    <!-- 楼层 开始 -->
+    <view class="index_floor">
+        <view class="floor_group" wx:for="{{floor}}" wx:for-item="item1" wx:for-index="index1" wx:key="floor_title">
+            <!-- 标题 -->
+            <view class="floor_title">
+                <image mode="widthFix" src="{{item1.floor_title.image_src}}"></image>
+            </view>
+            <!-- 内容 -->
+            <view class="floor_list">
+                <navigator wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="pid">
+                    <image mode="{{index2==0?'widthFix':'scaleToFill'}}" src="{{item2.image_src}}" />
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <!-- 楼层 结束 -->
 </view>
-
-
-
-
