@@ -1,64 +1,52 @@
 page {
   padding-bottom: 90rpx;
 }
-
-.title {
-  display: block;
+.detail_swiper swiper {
+  height: 65vw;
   text-align: center;
-  font-size: 50rpx;
-  font-weight: 500;
-  margin: 10rpx 0;
 }
-
-scroll-view {
-  width: 100%;
-  height: 100vh;
+.detail_swiper swiper image {
+  width: 60%;
 }
-
-swiper {
-  width: 96%;
-  height: 490rpx;
-  margin: 0 16rpx;
+.goods_price {
+  padding: 15rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--themeColor);
 }
-
-swiper video,
-image {
-  width: 100%;
-  border-radius: 16rpx;
-}
-
-.info {
-  width: 96%;
-  margin: 0 16rpx;
+.goods_name_row {
+  border-top: 5rpx solid #dedede;
+  border-bottom: 5rpx solid #dedede;
+  padding: 10rpx 0;
   display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  background-color: rgb(250, 105, 226)
 }
-
-.info text {
-  font-size: 40rpx;
-  color: white;
-  line-height: 80rpx;
+.goods_name_row .goods_name {
+  flex: 5;
+  color: #000;
+  font-size: 30rpx;
+  padding: 0 10rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
-
-.bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+.goods_name_row .goods_collect {
+  flex: 1;
   display: flex;
-  flex-direction: row;
-  background-color: rgb(250, 105, 226);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 1rpx solid #000;
 }
-
-.bottom button {
-  color: white;
-
-  width: 50%;
-  background-color: rgb(250, 105, 226);
+.goods_name_row .goods_collect .icon-shoucang1 {
+  color: orangered;
 }
-
+.goods_info .goods_info_title {
+  font-size: 32rpx;
+  color: var(--themeColor);
+  font-weight: 600;
+  padding: 20rpx;
+}
 .btm_tool {
   border-top: 1rpx solid #ccc;
   position: fixed;
@@ -108,4 +96,3 @@ image {
   font-size: 30rpx;
   font-weight: 600;
 }
-

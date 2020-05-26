@@ -27,7 +27,7 @@
             </view>
             <!-- 商品图片 -->
             <navigator class="cart_img_wrap">
-                <image mode="widthFix" src="../../images/logo.png"></image>
+                <image mode="widthFix" src="../../images/detail01.png"></image>
             </navigator>
             <!-- 商品信息 -->
             <view class="cart_info_wrap">
@@ -51,7 +51,7 @@
             </view>
             <!-- 商品图片 -->
             <navigator class="cart_img_wrap">
-                <image mode="widthFix" src="../../images/logo.png"></image>
+                <image mode="widthFix" src="../../images/detail02.png"></image>
             </navigator>
             <!-- 商品信息 -->
             <view class="cart_info_wrap">
@@ -85,7 +85,5 @@
         <view>包含运费</view>
     </view>
     <!-- 结算 -->
-    <view class="order_pay_wrap">
-        结算(2)
-    </view>
+    <view class="order_pay_wrap">结算(2)</view>
 </view>

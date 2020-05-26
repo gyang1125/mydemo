@@ -5,7 +5,7 @@
 <tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsItemChange">
     <block wx:if="{{tabs[0].isActive}}">
         <view class="first_tab">
-            <navigator class="goods_item" wx:for="{{products}}" wx:key="pid">
+            <navigator class="goods_item" wx:for="{{products}}" wx:key="pid" url="/pages/detail/detail?pic={{item.pid}}">
                 <!-- 左侧图片容器 -->
                 <view class="goods_img_wrap">
                     <image mode="widthFix" src="{{item.thumbnail?item.thumbnail:'./noimage.jpg'}}"></image>

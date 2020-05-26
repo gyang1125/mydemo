@@ -68,10 +68,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "detail",
 					"pathName": "pages/detail/detail",
-					"query": "",
+					"query": "pid=it001",
 					"scene": null
 				},
 				{
