@@ -2,12 +2,11 @@
 
 <button
   id="{{ id }}"
-  data-detail="{{ dataset }}"
   class="custom-class {{ utils.bem('button', [type, size, { block, round, plain, square, loading, disabled, hairline, unclickable: disabled || loading }]) }} {{ hairline ? 'van-hairline--surround' : '' }}"
   hover-class="van-button--active hover-class"
   lang="{{ lang }}"
   style="{{ baseStyle }} {{ customStyle }}"
-  open-type="{{ disabled ? '' : openType }}"
+  open-type="{{ openType }}"
   business-id="{{ businessId }}"
   session-from="{{ sessionFrom }}"
   send-message-title="{{ sendMessageTitle }}"
@@ -17,12 +16,12 @@
   app-parameter="{{ appParameter }}"
   aria-label="{{ ariaLabel }}"
   bindtap="{{ !disabled ? 'onClick' : 'noop' }}"
-  bindgetuserinfo="bindGetUserInfo"
-  bindcontact="bindContact"
-  bindgetphonenumber="bindGetPhoneNumber"
-  binderror="bindError"
-  bindlaunchapp="bindLaunchApp"
-  bindopensetting="bindOpenSetting"
+  bindgetuserinfo="{{ !disabled ? 'bindGetUserInfo' : 'noop' }}"
+  bindcontact="{{ !disabled ? 'bindContact' : 'noop' }}"
+  bindgetphonenumber="{{ !disabled ? 'bindGetPhoneNumber' : 'noop' }}"
+  binderror="{{ !disabled ? 'bindError' : 'noop' }}"
+  bindlaunchapp="{{ !disabled ? 'bindLaunchApp' : 'noop' }}"
+  bindopensetting="{{ !disabled ? 'bindOpenSetting' : 'noop' }}"
 >
   <block wx:if="{{ loading }}">
     <van-loading

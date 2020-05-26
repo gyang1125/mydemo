@@ -1,5 +1,4 @@
-const db = wx.cloud.database();
-const category = db.collection("category");
+import * as wxdb from "../../request/wxdbservice.js";
 
 Page({
   data: {
@@ -36,7 +35,7 @@ Page({
   },
 
   getCategory() {
-    category.get().then((res) => {
+    wxdb.getCollection("category").then((res) => {
       console.log(res.data);
       this.Cates = res.data;
       // 存入缓存

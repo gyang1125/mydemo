@@ -6,17 +6,15 @@
     "pages/shopping/shopping",
     "pages/login/login",
     "pages/detail/detail",
-    "pages/classtype/class/type",
     "pages/search/search",
-    "pages/category/category"
+    "pages/category/category",
+    "pages/goodslist/goodslist"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#eb4450",
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "欧洲葡萄酒精选平台",
-    "backgroundColor": "#eb4450",
     "backgroundTextStyle": "light",
-    "enablePullDownRefresh": false
+    "navigationBarBackgroundColor": "#eb4450",
+    "navigationBarTitleText": "欧洲红酒优选",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#999",

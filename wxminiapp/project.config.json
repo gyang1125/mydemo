@@ -21,7 +21,9 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"appid": "wxcd96b4b2a1094015",
 	"projectname": "BeautifulWine",
@@ -90,6 +92,14 @@
 					"id": -1,
 					"name": "category",
 					"pathName": "pages/category/category",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "goodslist",
+					"pathName": "pages/goodslist/goodslist",
+					"query": "pid=1",
 					"scene": null
 				}
 			]
