@@ -101,6 +101,13 @@
 					"pathName": "pages/goodslist/goodslist",
 					"query": "pid=1",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pay",
+					"pathName": "pages/pay/pay",
+					"query": "pid=it001",
+					"scene": null
 				}
 			]
 		}

@@ -1,27 +1,31 @@
-page {
-  padding-bottom: 90rpx;
+page{
+    padding-bottom: 90rpx;
 }
-.revice_address_row {
+.receive_address_row {
   .address_btn {
     padding: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     button {
       width: 60%;
     }
   }
-  .user_info_row {
-    display: flex;
-    padding: 20rpx;
-    .user_info {
-      flex: 5;
-    }
-    .user_phone {
-      flex: 3;
-      text-align: right;
-    }
+}
+
+.user_info_row {
+  display: flex;
+  padding: 20rpx;
+  .user_info {
+    flex: 5;
+  }
+  .user_phone {
+    flex: 3;
+    text-align: right;
   }
 }
 
-.cart_content {
+.cart_conent {
   .cart_title {
     padding: 20rpx;
     font-size: 36rpx;
@@ -34,7 +38,7 @@ page {
     .cart_item {
       display: flex;
       padding: 10rpx;
-      border-bottom: 1rpx solid #ccc;
+      border-bottom: 1rpx solid #000;
 
       .cart_chk_wrap {
         flex: 1;
@@ -53,7 +57,7 @@ page {
         justify-content: center;
         align-items: center;
         image {
-          width: 80%;
+          width: 80px;
         }
       }
 
@@ -69,7 +73,6 @@ page {
           -webkit-line-clamp: 2;
           color: #666;
         }
-
         .goods_price_wrap {
           display: flex;
           justify-content: space-between;
@@ -77,7 +80,6 @@ page {
             color: var(--themeColor);
             font-size: 34rpx;
           }
-
           .cart_num_tool {
             display: flex;
             .num_edit {
@@ -113,21 +115,26 @@ page {
   display: flex;
   border-top: 1rpx solid #ccc;
   .all_chk_wrap {
-    flex: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    checkbox-group {
+      checkbox {
+      }
+    }
   }
 
   .total_price_wrap {
     flex: 5;
     padding-right: 15rpx;
     text-align: right;
+
     .total_price {
-      .total_price_text {
-        color: var(--themeColor);
-        font-size: 34rpx;
-        font-weight: 600;
+      text.total_price_text {
+          color: var(--themeColor);
+          font-size: 34rpx;
+          font-weight: 600;
       }
     }
   }
@@ -141,5 +148,6 @@ page {
     display: flex;
     justify-content: center;
     align-items: center;
+
   }
 }

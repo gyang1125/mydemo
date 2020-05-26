@@ -8,7 +8,8 @@
     "pages/detail/detail",
     "pages/search/search",
     "pages/category/category",
-    "pages/goodslist/goodslist"
+    "pages/goodslist/goodslist",
+    "pages/pay/pay"
   ],
   "window": {
     "backgroundTextStyle": "light",
