@@ -27,6 +27,7 @@ public class AutoUnboxing {
 	}
 
 	public static void main(String[] args) {
+
 		IntegerTest();
 
 		StringTest1();
@@ -66,15 +67,15 @@ public class AutoUnboxing {
 		System.out.println("a.equals(b): " + a.equals(b)); // true 比较的是值
 
 		System.out.println(str1 == b);// false 常量对象和heap对象不同
-		String bb = b.intern();
-		System.out.println((str1 == bb));// true 赋值给常量对象，比较的是常量池中的对象
+		String b2 = b.intern(); // 把heap的字符串放入到常量池中
+		System.out.println((str1 == b2));// true 赋值给常量对象，比较的是常量池中的对象
 	}
 
 	/**
 	 * 这条语句创建了2个对象。
 	 * 
-	 * 当你new String("abc")时，其实会先在字符串常量区生成一个abc的对象，然后new
-	 * String()时会在堆中分配空间，然后此时会把字符串常量区中abc复制一个给堆中的String，故abc应该在堆中和字符串常量区
+	 * 当你new String("abc")时，其实会先在"字符串常量区"生成一个abc的对象，然后new
+	 * String()时会在堆中分配空间，然后此时会把字符串常量区中abc"复制"一个给堆中的String，故abc应该在堆中和字符串常量区
 	 */
 	private static void StringTest4() {
 
@@ -86,12 +87,14 @@ public class AutoUnboxing {
 	 * final 修饰，但是没有直接赋值
 	 */
 	private static void StringTest3() {
+		// C = "ab";
+		// D = "cd";
 		String s = C + D;
 		String t = "abcd";
 		if (s == t) {
 			System.out.println("s等于t，它们是同一个对象");
 		} else {
-			System.out.println("s不等于t，它们不是同一个对象");
+			System.out.println("SpringTest3: s不等于t，它们不是同一个对象");
 		}
 	}
 
@@ -103,7 +106,7 @@ public class AutoUnboxing {
 		String s = A + B; // 将两个常量用+连接对s进行初始化
 		String t = "abcd";
 		if (s == t) {
-			System.out.println("s等于t，它们是同一个对象");
+			System.out.println("SprintTest4: s等于t，它们是同一个对象");
 		} else {
 			System.out.println("s不等于t，它们不是同一个对象");
 		}
@@ -129,12 +132,12 @@ public class AutoUnboxing {
 	 * Integer的自动拆箱和cache的范围
 	 */
 	private static void IntegerTest() {
-		Integer i1 = 40;
+		Integer i1 = 40; // 自动装箱成为Integer
 		Integer i2 = 40;
 		Integer i3 = 0;
-		Integer i4 = new Integer(40);
-		Integer i5 = new Integer(40);
-		Integer i6 = new Integer(0);
+		Integer i4 = Integer.valueOf(40);
+		Integer i5 = Integer.valueOf(40);
+		Integer i6 = Integer.valueOf(0);
 		int i7 = 40;
 		Integer i8 = 400;
 		Integer i9 = 400;
@@ -144,6 +147,7 @@ public class AutoUnboxing {
 		System.out.println("i1=i4   " + (i1 == i4)); // false
 		System.out.println("i4=i5   " + (i4 == i5)); // false
 		System.out.println("i4=i5+i6   " + (i4 == i5 + i6)); // true
+		System.out.println("i1=i7 " + (i1 == i7)); // true, i1自动拆箱成int类型再和i7比较
 		System.out.println("i4=i7 " + (i4 == i7)); // true, i4自动拆箱成int类型再和i7比较
 		System.out.println("i8=i9 " + (i8 == i9)); // false, 超过cache范围，不放常量池，而是各自new了一个新对象
 	}

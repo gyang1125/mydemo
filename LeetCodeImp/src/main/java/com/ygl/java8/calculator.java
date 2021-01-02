@@ -22,6 +22,8 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class calculator {
 
 	enum Operation {
@@ -61,7 +63,7 @@ public class calculator {
 	}
 
 	private static String convertConent(List<String> column) {
-		StringBuffer contentBuffer = new StringBuffer();
+		final StringBuffer contentBuffer = new StringBuffer();
 		column.forEach(s -> {
 			contentBuffer.append(s);
 			contentBuffer.append(System.lineSeparator());
