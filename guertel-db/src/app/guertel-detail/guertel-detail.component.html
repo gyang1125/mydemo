@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row" *ngIf="guertel">
+    <div class="col-6">
+      <ul>
+        <li><span>Nummer: </span>{{guertel.nummer}}</li>
+        <li><span>Object: </span>{{guertel.objekt}}</li>
+        <li><span>Abmessung: </span>{{guertel.abmessung}}</li>
+        <li><span>Material: </span>{{guertel.material}}</li>
+        <li><span>Fundort: </span>{{guertel.fundort}}</li>
+        <li><span>Literaturangabe: </span>{{guertel.literaturangabe}}</li>
+        <li><span>Datierung: </span>{{guertel.datierung}}</li>
+        <li><span>Bemerkungen: </span>{{guertel.bemerkungen}}</li>
+      </ul>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-6">
+      <a href={{imgPath}} data-toggle="lightbox" target="_blank">
+        <img class="img-fluid" src={{imgPath}} alt="image">
+      </a>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+  });
+</script>
