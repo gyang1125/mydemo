@@ -1,13 +1,15 @@
- 
-<h1>{{title}}</h1>
-<br>
+<div style="text-align: center;">
+  <h1>{{title}}</h1>
+</div>
+<div style="height: 100px"></div>
 <div>
-    <div class="input-group mb-3">
-      <input  (keydown.enter)="onKey($event)" type="text" class="form-control" placeholder="Objekt-Nr. oder Objekt-Name" aria-label="Objekt-Nr."
-        aria-describedby="basic-addon2" id="key" #key>
-      <div class="input-group-append">
-        <button class="btn btn-primary" type="button" (click)="search(key.value)">Suche</button>
-      </div>
+  <div class="input-group w-75 mx-auto">
+    <input (keydown.enter)="onKey($event)" type="text" class="form-control" placeholder="Objekt-Nr. oder Objekt-Name"
+      aria-label="Objekt-Nr." aria-describedby="basic-addon2" id="key" #key>
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="button" (click)="search(key.value)">Suche</button>
     </div>
-    <app-guertel-list [key]="inputKey" *ngIf="inputKey && guertelArray" [guertelArray]="guertelArray"></app-guertel-list>
+  </div>
+  <div style="height: 100px"></div>
+  <app-guertel-list [key]="inputKey" *ngIf="inputKey && guertelArray" [guertelArray]="guertelArray"></app-guertel-list>
 </div>
