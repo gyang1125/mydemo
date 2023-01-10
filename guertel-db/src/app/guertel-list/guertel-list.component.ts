@@ -48,6 +48,8 @@ export class GuertelListComponent implements OnChanges, OnInit{
         this.findArray.push(val);
       } else if (val.objekt.toUpperCase().search(k) != -1) {
         this.findArray.push(val);
+      } else if (val.datierung.search(k) != -1) {
+        this.findArray.push(val);
       }
     }
   }

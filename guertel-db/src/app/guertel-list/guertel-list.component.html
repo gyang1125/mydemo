@@ -6,14 +6,16 @@
           <th scope="col">#</th>
           <th scope="col">Nummer</th>
           <th scope="col">Object</th>
+          <th scope="col">Datierung</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let guertel of findArray; let indexOfelement = index;"
           [class.selected]="guertel === selectedGuertel" (click)="onSelect(guertel)">
-          <td style="width: 10%">{{indexOfelement + 1}}</td>
-          <td style="width: 20%">{{guertel.nummer}}</td>
-          <td style="width: 70%">{{guertel.objekt}}</td>
+          <td style="width: 5%">{{indexOfelement + 1}}</td>
+          <td style="width: 15%">{{guertel.nummer}}</td>
+          <td style="width: 50%">{{guertel.objekt}}</td>
+          <td style="width: 30%">{{guertel.datierung}}</td>
         </tr>
       </tbody>
     </table>
