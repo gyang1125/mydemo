@@ -9,5 +9,5 @@
         <button class="btn btn-primary" type="button" (click)="search(key.value)">Suche</button>
       </div>
     </div>
-    <app-guertel-list [key]="inputKey" *ngIf="inputKey"></app-guertel-list>
+    <app-guertel-list [key]="inputKey" *ngIf="inputKey && guertelArray" [guertelArray]="guertelArray"></app-guertel-list>
 </div>

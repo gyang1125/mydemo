@@ -8,3 +8,11 @@
 .table-earnings {
     background: #F3F5F6;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 10vh;
+  }
