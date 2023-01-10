@@ -12,18 +12,18 @@ export class GuertelListComponent implements OnChanges, OnInit{
   @Input() guertelArray: Guertel[] = [];
   findArray: Guertel[] = [];
   pageOfItems?: Array<any>;
+  displayDetails?:Boolean;
 
   /*
    * only one time run, but before constructor
   */
   ngOnInit(): void {
-    //console.log('init get the key: ' + this.key);
-    this.findByKey();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.displayDetails = false;
     this.findArray = [];
-    //console.log('change get the key: ' + this.key);
+    console.log('change get the key: ' + this.key);
     if(this.key === "*") {
       this.findArray = this.guertelArray;
     } else {
@@ -55,6 +55,7 @@ export class GuertelListComponent implements OnChanges, OnInit{
   onSelect(guertel: Guertel): void {
     console.log(guertel);
     this.selectedGuertel = guertel;
+    this.displayDetails = true;
   }
 }
 
