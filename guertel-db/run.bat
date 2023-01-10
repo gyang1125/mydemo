@@ -1,2 +1,6 @@
 cd %~dp0
-ng serve --open
+@echo on
+call npm install
+call ng serve --open
+
+pause
