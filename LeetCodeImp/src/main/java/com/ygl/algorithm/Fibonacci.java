@@ -6,7 +6,7 @@ package com.ygl.algorithm;
  */
 public class Fibonacci {
 	public static void main(String[] args) {
-		for (int i = 1; i <= 5; i++) {
+		for (int i = 0; i <= 5; i++) {
 			fib(i);
 			System.out.println(fib(i));
 		}

@@ -2,6 +2,12 @@ package com.ygl.sorting;
 
 import java.util.Arrays;
 
+/**
+ * 比较两个数，把最大的数通过循环置换道数列尾部。
+ * 
+ * @author gyang
+ *
+ */
 public class BubbleSortTest {
 
 	public static void main(String[] args) {
@@ -22,7 +28,7 @@ public class BubbleSortTest {
 		// 外层循环控制比较轮数i
 		for (int i = 0; i < length; i++) {
 			// 内层循环控制每一轮比较次数，每进行一轮排序都会找出一个较大值
-			// (array.length - 1)防止索引越界，(array.length - 1 - i)减少比较次数
+			// (array.length - 1)防止索引越界,因为是要比较j 和 j+1。(array.length - 1 - i)减少比较次数
 			for (int j = 0; j < length - 1 - i; j++) {
 				// 前面的数大于后面的数就进行交换
 				if (array[j] > array[j + 1]) {
