@@ -138,9 +138,9 @@ public class VehicleController {
 	 * @throws InterruptedException
 	 * @throws ExecutionException
 	 */
-	@RequestMapping(value = "/{vin}/sessions?timestamp={timestamp}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{vin}/sessions", method = RequestMethod.GET)
 	public ResponseEntity<Position> getSingleSession(@PathVariable("vin") String vin,
-			@PathVariable("timestamp") Long timestamp) throws InterruptedException, ExecutionException {
+			@RequestParam("timestamp") Long timestamp) throws InterruptedException, ExecutionException {
 		log.debug("Assumption 2: Getting single session passing by timestamp");
 		Position position = vehicleService.findPositionByTimestamp(vin, timestamp);
 		return new ResponseEntity<Position>(position, HttpStatus.OK);

@@ -32,4 +32,10 @@ public class Lambda {
 	private static Integer operation(Integer x, MyFunc fun) {
 		return (Integer) fun.getValue(x);
 	}
+	
+	@FunctionalInterface
+	public interface MyFunc<T, R> {
+		public R getValue(T num);
+	}
+
 }

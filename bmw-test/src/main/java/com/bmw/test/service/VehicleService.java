@@ -180,16 +180,14 @@ public class VehicleService {
 
 	private void csvReader(String filePath) {
 		String csvFile = filePath;
-		BufferedReader br = null;
-		String line = "";
-		String cvsSplitBy = ",";
+		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+			String line = "";
+			String cvsSplitBy = ",";
 
-		Position position = null;
-		Vehicle vehicle = null;
-		List<Vehicle> vehicles = new ArrayList<Vehicle>();
-		Map<String, Vehicle> vehiclesMap = new HashMap<String, Vehicle>();
-		try {
-			br = new BufferedReader(new FileReader(csvFile));
+			Position position = null;
+			Vehicle vehicle = null;
+			List<Vehicle> vehicles = new ArrayList<Vehicle>();
+			Map<String, Vehicle> vehiclesMap = new HashMap<String, Vehicle>();
 			int count = 0;
 			while ((line = br.readLine()) != null) {
 				count++;
@@ -216,24 +214,15 @@ public class VehicleService {
 				}
 			}
 
+			for (Map.Entry<String, Vehicle> entry : vehiclesMap.entrySet()) {
+				vehicles.add(entry.getValue());
+			}
+			vehicleRepository.saveAll(vehicles);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+			log.error("Error reading CSV file: {}", e.getMessage(), e);
 		}
-		for (Map.Entry<String, Vehicle> entry : vehiclesMap.entrySet()) {
-			vehicles.add(entry.getValue());
-
-		}
-		vehicleRepository.saveAll(vehicles);
 	}
 
 	private void descendByTimestamp(List<Position> positions) {
