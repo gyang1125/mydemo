@@ -1,0 +1,28 @@
+<div *ngIf="findArray.length; else nothing">
+  <div class=table-wrapper>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nummer</th>
+          <th scope="col">Object</th>
+          <th scope="col">Datierung</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let guertel of findArray; let indexOfelement = index;"
+          [class.selected]="guertel === selectedGuertel" (click)="onSelect(guertel)">
+          <td style="width: 5%">{{indexOfelement + 1}}</td>
+          <td style="width: 15%">{{guertel.nummer}}</td>
+          <td style="width: 50%">{{guertel.objekt}}</td>
+          <td style="width: 30%">{{guertel.datierung}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-guertel-detail [guertel]="selectedGuertel" *ngIf="displayDetails"></app-guertel-detail>
+</div>
+
+<ng-template #nothing>
+  <div class="center"> nichts gefunden!</div>
+</ng-template>
